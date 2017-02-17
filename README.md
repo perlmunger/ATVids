@@ -76,6 +76,7 @@ class ConfigDelegate : NSObject, URLSessionDelegate {
     }
 }
 
+// Main begins here
 downloadJson { (saveLocation) in
     parseJson(at: saveLocation, completion: { 
         (urls:[URL]) in
