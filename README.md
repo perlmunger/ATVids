@@ -1,6 +1,6 @@
 # AppleTV Screensaver Video Downloader
 
-Apple's screensaver videos can be downloaded directly from their servers. They posted a JSON documemt that provides the details of the screensaver location videos here: http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json. So, I decided to put together a little Swift script that will:
+Apple's screensaver videos can be downloaded directly from their servers. They posted a JSON document that provides the details of the screensaver location videos here: http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json. So, I decided to put together a little Swift script that will:
 
 * Download the JSON file and parse it
 * Extract the list of URLs for all of the videos
