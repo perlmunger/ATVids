@@ -1,3 +1,18 @@
+# AppleTV Screensaver Video Downloader
+
+Apple's screensaver videos can be downloaded directly from their servers. They posted a JSON documemt that provides the details of the screensaver location videos here: http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json. So, I decided to put together a little Swift script that will:
+
+* Download the JSON file and parse it
+* Extract the list of URLs for all of the videos
+* Download all of the videos to the local disk
+
+The script, while fairly short, isn't as short as I thought it would be. I'm sure it can be improved, but if you have the Apple developer command line tools install, you can just download the main.swift file from this repo, change its permissions to be executable (e.g. `chmod o+x main.swift`) and then just run it with `./main.swift`.
+
+**Note:** Make sure you change the `baseSaveLocationUrl` to a location on your own computer.
+
+Here is the script in its entirety:
+
+```swift
 #!/usr/bin/swift
 
 import Foundation
@@ -103,3 +118,13 @@ downloadJson { (saveLocation) in
         })
     })
 }
+```
+## Some Notes
+
+* I didn't make it so you could specify the output location on the command line. I might do that later (not likely).
+* I am checking to see if a file exists on the local disk before attempting to download it again.
+* Because this is a script that runs on the command line, there is nothing to prevent it from qutting once the last line has been run. This is a problem since our download tasks run async in the background. I am therefore using a semaphore to block until everthing has finished.
+* I am using `URLSession`'s delegate methods to be notified when all downloads have completed.
+* When the downloads have all finished, I signal the semaphore and the app quits.
+
+
