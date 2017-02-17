@@ -128,6 +128,10 @@ downloadJson { (saveLocation) in
 * I am using `URLSession`'s delegate methods to be notified when all downloads have completed.
 * When the downloads have all finished, I signal the semaphore and the app quits.
 
+You should be able to see all the videos (55 at the time of this writing) in the finder:
+
+![Videos in Finder](http://i.imgur.com/BaJp0O4.png)
+
 ## License
 
 Do whatever you like with it. Consider it public domain.
