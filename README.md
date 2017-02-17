@@ -22,7 +22,7 @@ let semaphore           = DispatchSemaphore(value: 0)
 let baseSaveLocationUrl = URL(fileURLWithPath: "/Users/mlong/Downloads/atv/") // <-- Change me!!
 let downloadUrl         = URL(string:          "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json")!
 
-func downloadJson(with completion:@escaping ((_ saveLocation:URL) -> ())) {
+func downloadJson(with completion:((_ saveLocation:URL) -> ())?) {
 
     let task:URLSessionDownloadTask = URLSession.shared.downloadTask(with: downloadUrl) { (localUrl, response, error) in
         if error == nil {
@@ -36,7 +36,7 @@ func downloadJson(with completion:@escaping ((_ saveLocation:URL) -> ())) {
                 }
                 try! FileManager.default.copyItem(at: localUrl, to: saveLocation)
                 
-                completion(saveLocation)
+                completion?(saveLocation)
             }
         }
     }
