@@ -103,14 +103,14 @@ downloadJson { (saveLocation) in
         let session = URLSession(configuration: config, delegate: delegate, delegateQueue: nil)
         
         // Only get the files that haven't already been downloaded by filtering using
-        // the FileManager's fileExisrts(atPath:) method
+        // the FileManager's fileExists(atPath:) method
         let unDownloaded = urls.filter({ (url) -> Bool in
             let saveLocation = baseSaveLocationUrl.appendingPathComponent(url.lastPathComponent)
             return !FileManager.default.fileExists(atPath: saveLocation.path)
         })
         
         // Go ahead and bail out so that the semaphore gets signaled 
-        // and the app quits
+        // and the app quits since we have nothing new to download
         if unDownloaded.count <= 0 {
             // Since there won't be any tasks, this will immediately call back to our
             // ConfigDelegate object's implementation of urlSession:didBecomeInvalidWithError:
