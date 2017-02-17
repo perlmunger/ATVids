@@ -6,9 +6,9 @@ Apple's screensaver videos can be downloaded directly from their servers. They p
 * Extract the list of URLs for all of the videos
 * Download all of the videos to the local disk
 
-The script, while fairly short, isn't as short as I thought it would be. I'm sure it can be improved, but if you have the Apple developer command line tools install, you can just download the main.swift file from this repo, change its permissions to be executable (e.g. `chmod o+x main.swift`) and then just run it with `./main.swift`.
+The script, while fairly short, isn't as short as I thought it would be. I'm sure it can be improved, but if you have the Apple developer command line tools installed, you can just download the main.swift file from this repo, change its permissions to be executable (e.g. `chmod +x main.swift`) and then just run it with `./main.swift`.
 
-**Note:** Make sure you change the `baseSaveLocationUrl` to a location on your own computer.
+**Note:** Make sure you change the `baseSaveLocationUrl` to a location on your own computer befroe trying to run the script.
 
 Here is the script in its entirety:
 
@@ -126,5 +126,9 @@ downloadJson { (saveLocation) in
 * Because this is a script that runs on the command line, there is nothing to prevent it from qutting once the last line has been run. This is a problem since our download tasks run async in the background. I am therefore using a semaphore to block until everthing has finished.
 * I am using `URLSession`'s delegate methods to be notified when all downloads have completed.
 * When the downloads have all finished, I signal the semaphore and the app quits.
+
+## License
+
+Do whatever you like with it. Consider it public domain.
 
 
