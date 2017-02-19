@@ -11,12 +11,12 @@ entries = JSON.parse(Net::HTTP.get(uri))
 
 assets = entries.map { |entry| entry["assets"] }
 
-assets.flatten().map { |asset| asset["url"] }.each do |urlString|
-    filename = urlString.split('/').last
+assets.flatten().map { |asset| asset["url"] }.each do |url_string|
+    filename = url_string.split('/').last
     filepath = "/Users/mlong/Downloads/atv/ruby/#{filename}"
 
     unless File.exist?(filepath)
-        puts "Downloading #{urlString}"
+        puts "Downloading #{url_string}"
         File.open(filepath, "wb") do |save_location|
             open(urlString, "rb") do |read_file|
                 save_location.write(read_file.read)
