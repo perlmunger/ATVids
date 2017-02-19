@@ -149,7 +149,7 @@ You should be able to see all the videos (55 at the time of this writing) in the
 
 ## Just For Fun
 
-I wrote the same functionatliy into a ruby script just for fun. It's quite a bit shorter. In fairness, it uses some ruby modules that provide a lot of functionality. For instance, the whole JSON parsing capability is very well abstracted as is the open url functionality. In general, though, ruby is quite a bit more concise.
+I wrote the same functionatliy into a ruby script just for fun. It's quite a bit shorter. In fairness, it uses some ruby modules that provide a lot of functionality. For instance, the whole JSON parsing capability is very well abstracted as is the open uri functionality. In general, though, ruby is quite a bit more concise.
 
 ```ruby
 #!/usr/bin/env ruby
