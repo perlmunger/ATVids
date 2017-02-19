@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		B36C93451E56BD4700D6388E /* atvids */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = atvids; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36C93481E56BD4700D6388E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B36C934F1E592BD700D6388E /* atvids.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = atvids.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				B36C93481E56BD4700D6388E /* main.swift */,
+				B36C934F1E592BD700D6388E /* atvids.rb */,
 			);
 			path = atvids;
 			sourceTree = "<group>";
