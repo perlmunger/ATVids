@@ -147,6 +147,42 @@ You should be able to see all the videos (55 at the time of this writing) in the
 
 ![Videos in Finder](http://i.imgur.com/BaJp0O4.png)
 
+## Just For Fun
+
+I wrote the same functionatliy into a ruby script just for fun. It's quite a bit shorter. In fairness, it uses some ruby modules that provide a lot of functionality. For instance, the whole JSON parsing capability is very well abstracted. In general, though, ruby is quite a bit more concise.
+
+```ruby
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'open-uri'
+require 'json'
+
+url = 'http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json'
+uri = URI(url)
+
+entries = JSON.parse(Net::HTTP.get(uri))
+
+assets = entries.map { |entry| entry["assets"] }
+
+assets.flatten().map { |asset| asset["url"] }.each do |urlString|
+    filename = urlString.split('/').last
+    filepath = "/Users/mlong/Downloads/atv/ruby/#{filename}"
+
+    unless File.exist?(filepath)
+        puts "Downloading #{urlString}"
+        File.open(filepath, "wb") do |save_location|
+            open(urlString, "rb") do |read_file|
+                save_location.write(read_file.read)
+                puts "Saved file to #{filepath}"
+            end
+        end
+    end
+end
+
+puts "All files downloaded"
+```
+
 ## License
 
 Do whatever you like with it. Consider it public domain.
